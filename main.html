@@ -1,0 +1,144 @@
+<!--
+  Project: SkyCast — OpenWeatherMap version 🌦️
+  Author: Eiba Anas
+  GitHub: github.com/ebaa-anas
+  Year: 2025
+  Notes: Designed & developed by Eiba 🚀
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SkyCast — Weather</title>
+  <link rel="stylesheet" href="style.css" /> 
+</head>
+<body class="theme-loading">
+  <div class="weather-background"></div>
+  
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M6 15a6 6 0 1 1 9.9 4.8H7A5 5 0 1 1 6 9.2V9a7 7 0 0 1 13.6 1.9A5 5 0 0 1 18 21H7.5A5.5 5.5 0 0 1 6 15Z"/>
+      </svg>
+      <strong>SkyCast</strong>
+    </div>
+    <div class="actions">
+      <button id="detectBtn" class="btn ghost">📍 Use Location</button>
+      <button id="changeBtn" class="btn">Change location</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Current -->
+    <section class="card hero" aria-live="polite">
+      <div class="hero-head">
+        <div>
+          <h1 id="weekday">—</h1>
+          <p id="dateTime">—</p>
+          <p id="place" class="place">—</p>
+        </div>
+        <img id="heroIcon" class="big-icon" alt="" src="" />
+      </div>
+
+      <div class="hero-temp">
+        <span id="temp" class="temp">—°</span>
+        <span id="summary" class="summary">Loading…</span>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <span class="label">Precipitation</span>
+          <span class="value"><span id="precip">—</span></span>
+        </div>
+        <div class="metric">
+          <span class="label">Humidity</span>
+          <span class="value"><span id="humidity">—</span></span>
+        </div>
+        <div class="metric">
+          <span class="label">Wind</span>
+          <span class="value"><span id="wind">—</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Days -->
+    <aside class="card side">
+      <div class="row">
+        <h2 class="subtle">Next days</h2>
+        <div class="unit-toggle" role="group" aria-label="Unit">
+          <button id="cBtn" class="chip active">°C</button>
+          <button id="fBtn" class="chip">°F</button>
+        </div>
+      </div>
+      <div id="days" class="days"></div>
+      <button id="changeBtn2" class="btn wide">Change location</button>
+    </aside>
+  </main>
+
+  <!-- Hourly -->
+  <section class="card hourly">
+    <div class="row">
+      <h2>Hourly</h2>
+    </div>
+    <div id="hours" class="hours" aria-label="Hourly forecast"></div>
+  </section>
+<!--Footer-->
+  <footer class="foot">
+    <small>🌦️ Weather data by 
+      <a href="https://openweathermap.org/" target="_blank" rel="noreferrer">
+        OpenWeatherMap
+      </a>
+    </small>
+    <br>
+    <small>© 2025 Built with ❤️ by 
+      <a href="https://github.com/ebaa-anas" target="_blank">
+        Eiba Anas
+      </a>
+    </small>
+  </footer>
+  
+
+  <!-- Search Modal -->
+  <dialog id="searchModal">
+    <form id="searchForm" method="dialog" class="search">
+      <h3>Change location</h3>
+      <input id="q" name="q" type="search" placeholder="Search city..." autocomplete="off" required />
+      <ul id="results" class="results"></ul>
+  
+      <div class="quick-cities">
+        <button type="button" data-city="London" class="chip">London</button>
+        <button type="button" data-city="Istanbul" class="chip">Istanbul</button>
+        <button type="button" data-city="Tokyo" class="chip">Tokyo</button>
+        <button type="button" data-city="New York" class="chip">New York</button>
+      </div>
+  
+      <menu class="menu">
+        <button value="cancel" class="btn ghost">Cancel</button>
+      </menu>
+    </form>
+  </dialog>
+  
+
+  <!-- Templates -->
+  <template id="dayTpl">
+    <button class="day">
+      <span class="dot" aria-hidden="true">•</span>
+      <span class="dow">Wed</span>
+      <span class="range"><b>27</b> / 20</span>
+    </button>
+  </template>
+
+  <template id="hourTpl">
+    <div class="hour">
+      <div class="time">14:00</div>
+      <img class="icon" alt="" src="" />
+      <div class="val">27°</div>
+      <div class="meta">12 km/h</div>
+    </div>
+  </template>
+
+  <script src="javascript.js" defer></script>
+</body>
+</html>
